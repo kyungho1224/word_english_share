@@ -1,0 +1,4 @@
+[submodule "src/main/resources/word-share-secret"]
+	path = src/main/resources/word-share-secret
+	url = https://github.com/kyungho1224/word-share-secret.git
+	branch = main

@@ -1,0 +1,9 @@
+spring:
+  config:
+    import:
+      - classpath:/word-share-secret/application-local.yml
+      - classpath:/word-share-secret/application-prod.yml
+
+  profiles:
+    default: local
+    active: local
