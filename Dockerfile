@@ -2,9 +2,8 @@
 FROM openjdk:17-jdk-slim AS build
 WORKDIR /app
 COPY . .
-# gradlew에 실행 권한 부여
 RUN chmod +x ./gradlew
-RUN ./gradlew bootJar
+RUN ./gradlew clean bootJar
 #RUN ./gradlew build --no-daemon -x test
 # 실행 단계
 FROM openjdk:17-jdk-slim
@@ -31,7 +30,6 @@ FROM alpine:latest
 ENV JAVA_HOME=/jre
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 COPY --from=corretto-jdk /jre $JAVA_HOME
-#COPY --from=build /app/src/main/resources/serviceAccountKey.json /app/src/main/resources/serviceAccountKey.json
 ARG JAR_FILE=/app/build/libs/*.jar
 COPY --from=build /app/build/libs/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
