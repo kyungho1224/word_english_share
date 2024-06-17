@@ -5,9 +5,6 @@ services:
     container_name: word-english-share
     image: kimkyungho/word-english-share
     restart: always
-    depends_on:
-      - mysql
-      - redis
     environment:
       - TZ=Asia/Seoul
     volumes:
